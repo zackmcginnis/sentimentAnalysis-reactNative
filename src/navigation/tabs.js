@@ -20,6 +20,8 @@ import Placeholder from '@components/general/Placeholder';
 import Error from '@components/general/Error';
 import StyleGuide from '@containers/StyleGuideView';
 import Recipes from '@containers/recipes/Browse/BrowseContainer';
+import SearchListing from '@containers/Search/SearchContainer';
+import SavedResultsListing from '@containers/SavedResults/SavedResultsContainer';
 import RecipeView from '@containers/recipes/RecipeView';
 
 const navbarPropsTabs = {
@@ -36,11 +38,13 @@ const scenes = (
   <Scene key={'tabBar'} tabs tabBarIconContainerStyle={AppStyles.tabbar} pressOpacity={0.95}>
     <Scene
       {...navbarPropsTabs}
-      key={'recipes'}
-      title={'Recipes'}
+      key={'search'}
+      component={SearchListing}
+      title={'Discover Sentiment'}
       icon={props => TabIcon({ ...props, icon: 'search' })}
-    >
-      <Scene
+      analyticsDesc={'Discover Twitter sentiment of your search query'}
+    />
+{/*      <Scene
         {...navbarPropsTabs}
         key={'recipesListing'}
         component={Recipes}
@@ -55,6 +59,15 @@ const scenes = (
         analyticsDesc={'RecipeView: View Recipe'}
       />
     </Scene>
+*/}
+    <Scene
+      key={'savedResults'}
+      {...navbarPropsTabs}
+      title={'History'}
+      component={SavedResultsListing}
+      icon={props => TabIcon({ ...props, icon: 'assessment' })}
+      analyticsDesc={'Results Of Your Sentiment Analysis'}
+    />
 
     <Scene
       key={'timeline'}
@@ -65,14 +78,6 @@ const scenes = (
       analyticsDesc={'Placeholder: Coming Soon'}
     />
 
-    <Scene
-      key={'error'}
-      {...navbarPropsTabs}
-      title={'Example Error'}
-      component={Error}
-      icon={props => TabIcon({ ...props, icon: 'error' })}
-      analyticsDesc={'Error: Example Error'}
-    />
 
     <Scene
       key={'styleGuide'}

@@ -1,3 +1,16 @@
+# Sentiment Analysis Mobile App
+This application will receive a search term provided by the user, and return a sentiment analysis of that search term based on recent tweets (Twitter API).  
+
+The model which performs the sentiment analysis will reside on a Heroku server (not Firebase, as was originally built in to the RNSK template). The back-end of the project, written in Python/Django, is contained in the "/server" directory.
+
+## Running
+The RNSK docs below cover the basics of installing and running the application.
+If you plan on running the app on an emulator, be sure you have the appropriate packages installed for Android Studio (Android).
+
+If you plan on running the app on your mobile device, follow the instructions here:
+https://facebook.github.io/react-native/docs/running-on-device.html
+
+# RNSK Docs
 [![GitHub tag](https://img.shields.io/github/tag/mcnamee/react-native-starter-app.svg?style=flat-square)](https://github.com/mcnamee/react-native-starter-app/tags)
 [![GitHub contributors](https://img.shields.io/github/contributors/mcnamee/react-native-starter-app.svg?style=flat-square)](https://github.com/mcnamee/react-native-starter-app/contributors)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://raw.githubusercontent.com/mcnamee/react-native-starter-app/master/LICENSE)

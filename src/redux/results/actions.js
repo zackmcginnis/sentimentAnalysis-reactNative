@@ -5,7 +5,7 @@
  * https://github.com/mcnamee/react-native-starter-app
  */
 import { AsyncStorage } from 'react-native';
-import * as RecipeActions from '../recipes/actions';
+//import * as RecipeActions from '../recipes/actions';
 
 /**
   * Get Login Credentials from AsyncStorage

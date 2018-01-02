@@ -63,7 +63,7 @@ export function getMeals() {
       return {
         type: 'MEALS_REPLACE',
         data: [],
-      }; 
+      };
   //   });
   // });
 }
@@ -86,4 +86,15 @@ export function getRecipes() {
       };
   //   });
   // });
+}
+
+export function getResults() {
+  //return fetch('https://jsonplaceholder.typicode.com/posts/1')
+  //return dispatch => fetch('https://jsonplaceholder.typicode.com/posts/1')
+    // .then( (response) => {
+    //   return {
+    //     type: 'RESULTS_REPLACE',
+    //     data: []
+    //   };
+    // })
 }

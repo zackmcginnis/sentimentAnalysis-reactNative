@@ -22,15 +22,18 @@ import TabsScenes from './tabs';
 /* Routes ==================================================================== */
 export default Actions.create(
   <Scene key={'root'} {...AppConfig.navbarProps}>
-    <Scene
+{/*     <Scene
       hideNavBar
       key={'splash'}
       component={AppLaunch}
       analyticsDesc={'AppLaunch: Launching App'}
     />
+*/}
 
-    {/* Auth */}
+  {/* Auth
     {AuthScenes}
+    
+  */}
 
     {/* Main App */}
     <Scene key={'app'} {...AppConfig.navbarProps} title={AppConfig.appName} hideNavBar={false} type={ActionConst.RESET}>
