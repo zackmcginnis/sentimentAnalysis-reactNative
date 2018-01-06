@@ -12,6 +12,7 @@ import {
   View,
   ListView,
   RefreshControl,
+  FlatList,
 } from 'react-native';
 
 import { Actions } from 'react-native-router-flux';
@@ -22,7 +23,7 @@ import { ErrorMessages } from '@constants/';
 
 // Components
 import { Spacer, Text, Button } from '@ui/';
-
+import ResultListItem from './ResultListItem';
 // Containers
 //import RecipeCard from '@containers/recipes/Card/CardContainer';
 
@@ -34,7 +35,7 @@ class ResultsView extends Component {
   static componentName = 'ResultsView';
 
   static propTypes = {
-    results: PropTypes.arrayOf(PropTypes.object),
+    //results: PropTypes.arrayOf(PropTypes.object),
     //reFetch: PropTypes.func,
   }
 
@@ -83,26 +84,57 @@ class ResultsView extends Component {
     }
   }
 
+  _onPressItem = (id: string) => {
+    // // updater functions are preferred for transactional updates
+    // this.setState((state) => {
+    //   // copy the map rather than modifying state.
+    //   const selected = new Map(state.selected);
+    //   selected.set(id, !selected.get(id)); // toggle
+    //   return {selected};
+    // });
+  };
+
+  // _renderItem = ({item}) => (
+  //   <ResultListItem
+  //     id={item.id}
+  //     onPressItem={this._onPressItem}
+  //     title={item.title}
+  //   />
+  // );
+
   render = () => {
     //const { recipes } = this.props;
     const { isRefreshing, dataSource } = this.state;
-    console.log("logging results view **********************")
-    console.log("***************************")
+    console.log("logging results view **********************", this.props.results, this.state.results)
 
     // if (!isRefreshing && (!recipes || recipes.length < 1)) {
     //   return <Error text={ErrorMessages.recipe404} />;
     // }
 
-    return (
-      <View style={[AppStyles.container]}>
-        <Text
-          style={[AppStyles.textCenterAligned]}
-        >
-          test
-          {this.state.results}
-        </Text>
-      </View>
-    );
+    if(this.props.results === null) {
+      return (
+        <View style={[AppStyles.container]}>
+          <Text
+            style={[AppStyles.textCenterAligned]}
+          >
+            No Results
+          </Text>
+        </View>
+      );
+    } else {
+      console.log(`this.props.results`, this.props.results)
+      return (
+        <View style={[AppStyles.container]}>
+          <FlatList
+            data={this.props.results}
+            renderItem={
+              ({item}) => <Text>{item.title}</Text>
+            }
+            keyExtractor={(item, index) => index}
+          />
+        </View>
+      );
+    }
   }
 }
 /* Export Component ==================================================================== */

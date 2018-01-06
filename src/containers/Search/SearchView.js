@@ -36,7 +36,7 @@ class SearchView extends Component {
 
   static propTypes = {
     //query: PropTypes.string,
-    results: PropTypes.arrayOf(PropTypes.object),
+    //results: PropTypes.arrayOf(PropTypes.object),
     reFetch: PropTypes.func
   }
 
@@ -67,11 +67,14 @@ class SearchView extends Component {
     * Refetch Data (Pull to Refresh)
     */
   reFetch = (query) => {
+    console.log(`in refetch in searchView`, query)
     if (this.props.reFetch) {
+      console.log(`passed this.props.reFetch in searchView`)
       this.setState({ isRefreshing: true });
 
       this.props.reFetch(query)
         .then(() => {
+          console.log(`in response of refetch in searchView`)
           this.setState({ isRefreshing: false });
         });
     }
@@ -80,8 +83,7 @@ class SearchView extends Component {
   render = () => {
     //const { recipes } = this.props;
     const { isRefreshing, dataSource } = this.state;
-    console.log("logging search view **********************")
-    console.log("***************************")
+    //console.log("logging search view ********************** query query, results results", this.state.query, this.props.query, this.state.results, this.props.results)
 
     // if (!isRefreshing && (!recipes || recipes.length < 1)) {
     //   return <Error text={ErrorMessages.recipe404} />;
@@ -98,7 +100,7 @@ class SearchView extends Component {
         value={this.state.query} />
         <Button small title={'Search'} onPress={() => this.reFetch(this.state.query)} />
         <ResultsViewRender
-          results={this.state.results}
+          results={this.props.results}
         />
       </View>
     );

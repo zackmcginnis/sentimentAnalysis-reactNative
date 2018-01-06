@@ -35,12 +35,12 @@ class SearchListing extends Component {
   }
 
   static defaultProps = {
-    results: [],
+    //results: [],
   }
 
   state = {
     loading: false,
-    results: [],
+    results: null,
   }
 
   //componentDidMount = () => this.getThisMealsRecipes(this.props.recipes);
@@ -69,7 +69,9 @@ class SearchListing extends Component {
   fetchResults = (query) => fetch("https://jsonplaceholder.typicode.com/posts") //this.props.getResults(query)
    .then((response) => {
      console.log("response*************", response)
-     this.setState({ error: null, loading: false, results: response})
+     response.json().then( (data) => {
+       this.setState({ error: null, loading: false, results: data})
+     })
    })
    .catch(err => this.setState({ error: err.message, loading: false, results: []}))
 
